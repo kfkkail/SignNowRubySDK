@@ -1,0 +1,22 @@
+{
+    "originator": "1385512846.187677bill@signnow.com",
+    "json_attributes": {
+        "width": "60",
+        "page_number": "0",
+        "y": "67",
+        "x": "307",
+        "required": "true",
+        "label": "shoop da whoop",
+        "height": "12"
+    },
+    "fulfiller": null,
+    "type": "text",
+    "field_request_id": null,
+    "field_id": null,
+    "role_id": "d39575e4ff10f14f5f23db52108bf33835a11921",
+    "field_request_canceled": null,
+    "role": "tatonka",
+    "element_id": null,
+    "template_field_id": "959372c49c299b31dc9bd8ac2a3c532579ad5591",
+    "id": "959372c49c299b31dc9bd8ac2a3c532579ad5591"
+}

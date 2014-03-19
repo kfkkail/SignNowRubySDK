@@ -1,0 +1,21 @@
+defaults: &defaults
+  client_id: 0fccdbc73581ca0f9bf8c379e6a96813
+  client_secret: 3719a124bcfc03c534d4f5c05b5a196b
+
+development:
+  <<: *defaults
+  base_url: http://api.loc.signnow.com
+  signing_base_url: http://loc.signnow.com
+
+eval:
+  <<: *defaults
+  base_url: https://capi-eval.signnow.com/api
+  signing_base_url: https://eval.signnow.com
+
+rc:
+  <<: *defaults
+  base_url: https://api-rc.signnow.com
+  signing_base_url: https://rc.signnow.com/
+
+production:
+  <<: *defaults
