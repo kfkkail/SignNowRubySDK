@@ -4,8 +4,8 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  base_url: http://api.loc.signnow.com
-  signing_base_url: http://loc.signnow.com
+  base_url: http://api.vm.signnow.com
+  signing_base_url: http://vm.signnow.com
 
 eval:
   <<: *defaults
