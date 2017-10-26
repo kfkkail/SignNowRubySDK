@@ -42,7 +42,7 @@ module SN
           authorization: "Bearer #{@from_user_token}"
       }
       begin
-        RestClient.post("#{SN.Settings.base_url}/document/#{@document_id}/invite", to_json, headers)
+        RestClient.post("#{SN.Settings.base_url}/document/#{@document_id}/invite?email=disable", to_json, headers)
         true
       rescue Exception => e
         puts e.inspect
