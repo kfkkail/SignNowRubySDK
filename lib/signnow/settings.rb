@@ -10,6 +10,10 @@ module SN
     @@Settings = OpenStruct.new(config[env] || {})
   end
 
+  def load_settings_params(params)
+    @@Settings = OpenStruct.new(params || {})
+  end
+
   def Settings
     @@Settings
   end
