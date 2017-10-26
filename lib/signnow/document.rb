@@ -202,7 +202,7 @@ module SN
         headers = { authorization: "Bearer #{@user_token}" }
 
         begin
-          response = RestClient.post("#{SN.Settings.base_url}/document/", payload, headers)
+          response = RestClient.post("#{SN.Settings.base_url}/document/fieldextract", payload, headers)
           @id = JSON.parse(response.body)['id']
           true
         rescue Exception => e
