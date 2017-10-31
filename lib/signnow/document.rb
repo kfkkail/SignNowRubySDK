@@ -169,7 +169,7 @@ module SN
 
       scope = "document/#{params[:id]} document/#{params[:id]}/* user user/signature"
       restricted_access_token = Token.create(username: params[:username], password: params[:password], grant_type: 'password', scope: scope)
-      "#{SN.Settings.signing_base_url}/dispatch?route=asign&document_id=#{params[:id]}&access_token=#{restricted_access_token.access_token}&redirect_uri=%2Fdocument-saved-successfully&disable_email=true"
+      "#{SN.Settings.signing_base_url}/dispatch?route=fieldinvite&document_id=#{params[:id]}&access_token=#{restricted_access_token.access_token}&redirect_uri=%2Fdocument-saved-successfully&disable_email=true"
     end
 
 
