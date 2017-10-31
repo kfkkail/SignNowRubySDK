@@ -12,6 +12,7 @@ require 'signnow/user'
 require 'signnow/token'
 require 'signnow/role'
 require 'signnow/role_based_invitation'
+require 'signnow/event_subscription'
 
 module SN
 
