@@ -3,7 +3,7 @@ require 'signnow'
 
 module SN
   class Field
-    attr_accessor :id, :x, :y, :width, :height, :page_number, :role, :required, :type, :element_id, :field_id, :label
+    attr_accessor :id, :x, :y, :width, :height, :page_number, :role, :required, :type, :element_id, :field_id, :label, :custom_defined_option
 
     def initialize(attrs = {})
       attrs.each do |key, value|
@@ -26,7 +26,8 @@ module SN
         type: @type,
         element_id: @element_id,
         field_id: @field_id,
-        label: @label
+        label: @label,
+        custom_defined_option: @custom_defined_option
       }.to_json
     end
 
