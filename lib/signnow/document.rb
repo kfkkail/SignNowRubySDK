@@ -169,7 +169,12 @@ module SN
 
       scope = "document/#{params[:id]} document/#{params[:id]}/* user user/signature"
       restricted_access_token = Token.create(username: params[:username], password: params[:password], grant_type: 'password', scope: scope)
-      "#{SN.Settings.signing_base_url}/dispatch?route=fieldinvite&document_id=#{params[:id]}&access_token=#{restricted_access_token.access_token}&redirect_uri=https%3A%2F%2Fsignnow.com%2Fdocument-saved-successfully"
+      url = "#{SN.Settings.signing_base_url}/dispatch?route=fieldinvite&document_id=#{params[:id]}&access_token=#{restricted_access_token.access_token}"
+      if (params[:redirect_uri])
+        redirect_url = URI.escape(params[:redirect_uri], '/:')
+        url += "&redirect_uri=#{redirect_url}"
+      end
+      url
     end
 
 
