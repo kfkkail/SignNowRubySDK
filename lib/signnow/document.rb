@@ -169,7 +169,7 @@ module SN
 
       scope = "document/#{params[:id]} document/#{params[:id]}/* user user/signature"
       restricted_access_token = Token.create(username: params[:username], password: params[:password], grant_type: 'password', scope: scope)
-      url = "#{SN.Settings.signing_base_url}/dispatch?route=fieldinvite&document_id=#{params[:id]}&access_token=#{restricted_access_token.access_token}&mobileweb=mobileweb_only&use_signature_panel=0"
+      url = "#{SN.Settings.signing_base_url}/dispatch?route=fieldinvite&document_id=#{params[:id]}&access_token=#{restricted_access_token.access_token}&mobileweb=mobileweb_only&use_signature_panel=1"
       if (params[:redirect_uri])
         redirect_url = URI.escape(params[:redirect_uri], '/:')
         url += "&redirect_uri=#{redirect_url}"
