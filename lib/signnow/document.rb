@@ -209,7 +209,7 @@ module SN
         headers = { authorization: "Bearer #{@user_token}" }
 
         begin
-          response = RestClient.post("#{SN.Settings.base_url}/document/fieldextract", payload, headers)
+          response = RestClient::Request.execute(method: :post, url: "#{SN.Settings.base_url}/document/fieldextract", payload: payload, headers: headers, open_timeout: 360, timeout: 360)
           @id = JSON.parse(response.body)['id']
           true
         rescue Exception => e
