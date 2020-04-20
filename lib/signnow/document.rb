@@ -4,7 +4,7 @@ require 'signnow'
 
 module SN
   class Document
-    attr_accessor :id, :texts, :signatures, :checks, :fields, :updated, :requests, :roles, :field_invites
+    attr_accessor :id, :texts, :signatures, :checks, :fields, :updated, :requests, :roles, :field_invites, :tags
 
     attr_accessor :filename, :user_token
 
@@ -20,6 +20,7 @@ module SN
       @fields ||= []
       @roles ||= []
       @field_invites ||= []
+      @tags ||= []
     end
 
 
@@ -41,7 +42,8 @@ module SN
         updated: @updated,
         requests: @requests,
         field_invites: @field_invites,
-        roles: @roles
+        roles: @roles,
+        tags: @tags
       }.reject! { |k, v| v.nil? }.to_json
     end
 
@@ -205,11 +207,18 @@ module SN
     private
       def create
         validate_new_doc_params!
-        payload = { multipart: true, file: File.new(@filename, 'rb') }
+        payload = { multipart: true, file: File.new(@filename, 'rb'), Tags: @tags.to_json }
         headers = { authorization: "Bearer #{@user_token}" }
 
         begin
-          response = RestClient::Request.execute(method: :post, url: "#{SN.Settings.base_url}/document/fieldextract", payload: payload, headers: headers, open_timeout: 360, timeout: 360)
+          response = RestClient::Request.execute(
+            method: :post,
+            url: "#{SN.Settings.base_url}/document/fieldextract",
+            payload: payload,
+            headers: headers,
+            open_timeout: 360,
+            timeout: 360
+          )
           @id = JSON.parse(response.body)['id']
           true
         rescue Exception => e
