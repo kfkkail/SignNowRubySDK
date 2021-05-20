@@ -47,11 +47,10 @@ module SN
     # @return [Boolean] true if successful
     def save
       validate!
-      encoded = Base64.strict_encode64(SN.Settings.client_id + ':' + SN.Settings.client_secret)
       headers = {
         content_type: :json,
         accept: :json,
-        authorization: "Basic #{encoded}"
+        authorization: "Basic #{SN.Settings.basic_authorization}"
       }
 
       begin

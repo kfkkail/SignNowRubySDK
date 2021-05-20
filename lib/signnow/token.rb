@@ -8,7 +8,6 @@ module SN
       end
     end
 
-
     # Deserialize a JSON document into an instance of {Token}
     #
     # @param [String] str the JSON string to deserialize
@@ -16,7 +15,6 @@ module SN
     def self.from_json(str)
       self.new JSON.parse(str)
     end
-
 
     # Retrieve an OAuth token as a {Token} to verify its validity
     #
@@ -34,7 +32,6 @@ module SN
       end
     end
 
-
     # Creates an OAuth token for the SignNow user
     #
     # @param [Hash] params
@@ -44,8 +41,6 @@ module SN
     # @option params [String] :scope the scope for the generated OAuth token
     # @return {Token}
     def self.create(params = {})
-      encoded = Base64.strict_encode64(SN.Settings.client_id + ':' + SN.Settings.client_secret)
-
       payload = {
           username: params[:username],
           password: params[:password],
@@ -54,7 +49,7 @@ module SN
       }
 
       begin
-        response = RestClient.post("#{SN.Settings.base_url}/oauth2/token", payload, authorization: "Basic #{encoded}")
+        response = RestClient.post("#{SN.Settings.base_url}/oauth2/token", payload, authorization: "Basic #{SN.Settings.basic_authorization}")
         Token.from_json(response.body)
       rescue Exception => e
         puts e.inspect
@@ -63,4 +58,3 @@ module SN
     end
   end
 end
-
