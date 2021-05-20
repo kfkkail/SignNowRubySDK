@@ -1,7 +1,7 @@
 require 'base64'
 
 Given(/^I am an API user of SignNow$/) do
-  @api_user = SN::User.new(access_token: 'Basic' + Base64.strict_encode64(SN.Settings.client_id + ':' + SN.Settings.client_secret))
+  @api_user = SN::User.new(access_token: 'Basic' + SN.Settings.basic_authorization)
 end
 
 Given(/^I have (?:a|the) users?$/) do |table|
